@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import { GuessCount } from './GuessCount'
+import { Card } from './Card'
 
 class App extends Component {
+  handleCardClick(card) {
+    console.log(card ,'clicked')
+  }
+
   render() {
+
+    const won = false
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="memory">
+        <GuessCount guesses={0} />
+        <Card card="😀" feedback="hidden" onClick={this.handleCardClick} />
+        <Card card="🎉" feedback="justMatched" onClick={this.handleCardClick}/>
+        <Card card="💖" feedback="justMismatched" onClick={this.handleCardClick}/>
+        <Card card="🎩" feedback="visible" onClick={this.handleCardClick}/>
+        <Card card="🐶" feedback="hidden" onClick={this.handleCardClick}/>
+        <Card card="🐱" feedback="justMatched" onClick={this.handleCardClick}/>
+        {won && <p>GAGNÉ !</p>}
       </div>
-    );
+
+      
+    )
   }
 }
 
-export default App;
+export default App
